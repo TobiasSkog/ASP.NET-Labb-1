@@ -1,0 +1,73 @@
+﻿@model net23_asp_net_labb1.Models.SearchEmployeeViewModel
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h1>Results</h1>
+<hr />
+<div>
+    <dl class="row">
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Employee.Id)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Employee.Id)
+        </dd>
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.HaveActiveLeaveApplication)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.HaveActiveLeaveApplication)
+        </dd>
+        </dl>
+
+        @if(Model.HaveActiveLeaveApplication)
+        {           
+            string startDate = Model.LeaveApplication.StartDate.ToShortDateString();
+            string endDate = Model.LeaveApplication.EndDate.ToShortDateString();
+
+        <table class="table my-4">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LeaveApplication.StartDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LeaveApplication.EndDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LeaveApplication.ApplicationDate)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>
+                                @startDate
+                            </td>
+                            <td>
+                                 @endDate
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.LeaveApplication.ApplicationDate)
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        }
+
+</div>
+
+<div class="mt-4">
+    <a asp-action="Search">Back to Search</a>
+</div>

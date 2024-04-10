@@ -1,0 +1,25 @@
+﻿@model net23_asp_net_labb1.Models.FilterDateViewModel
+@{
+    ViewData["Title"] = "Results";
+}
+<h1>Filter all leave applications by date</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="FilterDates">
+            <div class="form-group">
+                <label class="control-label">Choose a Month</label>
+                <select class="form-control" name="month" asp-items="ViewBag.Months"></select>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="FilterDates" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Index">Back to Search page</a>
+</div>

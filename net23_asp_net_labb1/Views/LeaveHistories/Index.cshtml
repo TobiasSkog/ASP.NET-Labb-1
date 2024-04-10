@@ -1,0 +1,41 @@
+﻿@model IEnumerable<net23_asp_net_labb1.Models.LeaveHistory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveApplication.LeaveType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveApplication.ApplicationStatus)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveApplication.LeaveType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveApplication.ApplicationStatus)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

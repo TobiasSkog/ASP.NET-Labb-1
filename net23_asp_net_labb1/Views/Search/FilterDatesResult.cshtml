@@ -1,0 +1,55 @@
+﻿@using System.Globalization
+@model net23_asp_net_labb1.Models.FilterDateViewModel
+@{
+    ViewData["Title"] = "Filtered Date Results";
+}
+
+<h1>Results for @Model.FilteredByMonth</h1>
+
+<hr/>
+
+<div>
+@if (Model.LeaveApplications.Count > 0)
+{
+    <table class="table my-4">
+        <thead>
+            <tr>
+                <th>
+                    Employee
+                </th>
+                <th>
+                    Amount of days
+                </th>
+                <th>
+                    Created
+                </th>
+            </tr>
+        </thead>
+
+    @foreach (var item in Model.LeaveApplications){
+    var amountOfDays = item.EndDate - item.StartDate;
+        <tbody>
+            <tr>
+                <td>
+                  @item.Employee.Name
+                </td>
+                <td>
+                    @amountOfDays.Days
+                </td>
+                <td>
+                    @item.ApplicationDate
+                </td>
+            </tr>
+        </tbody>
+    }
+    </table>
+}
+else{
+    <p>No employees have a leave application for the selected month.</p>
+}
+</div>
+
+
+<div class="mt-4">
+    <a asp-action="FilterDates">Back to Filter Dates</a>
+</div>
