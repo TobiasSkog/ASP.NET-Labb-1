@@ -2,6 +2,7 @@
 @model net23_asp_net_labb1.Models.FilterDateViewModel
 @{
     ViewData["Title"] = "Filtered Date Results";
+    int totalAmountOfDays = 0;
 }
 
 <h1>Results for @Model.FilteredByMonth</h1>
@@ -28,7 +29,8 @@
 
     @foreach (var item in Model.LeaveApplications){
     var amountOfDays = item.EndDate - item.StartDate;
-        <tbody>
+    totalAmountOfDays += amountOfDays.Days;
+                <tbody>
             <tr>
                 <td>
                   @item.Employee.Name
@@ -41,8 +43,12 @@
                 </td>
             </tr>
         </tbody>
+
     }
     </table>
+    <div>
+            <p>Total Amount of Days: @totalAmountOfDays</p>
+    </div>
 }
 else{
     <p>No employees have a leave application for the selected month.</p>
